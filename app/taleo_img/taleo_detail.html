@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Job Details</title>
+<meta name="viewport" content="width=420">
+<style type="text/css">
+* {
+  font-family: helvetica;
+  width: 380px;
+}
+h4 {
+ color: #333
+}
+div {
+  border: 1px solid #555;
+  background-color: #eee;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+<h3>Job details</h3>
+<h4 id="job"></h4>
+<div id="desc">
+</div>
+
+<script type="text/javascript">
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+var job = getParameterByName( 'job' );
+var desc = getParameterByName( 'desc' );
+document.getElementById("job").innerHTML = job;
+document.getElementById("desc").innerHTML = desc;
+</script>
+</body>
+</html>
