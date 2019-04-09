@@ -9,3 +9,8 @@ app.use(express.static(staticPath));
 app.listen(3000, function() {
   console.log('listening on port 3000');
 });
+
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + "/home.html");
+});
+
