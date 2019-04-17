@@ -5,6 +5,9 @@ const port = process.env.PORT || 3030;
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });
+app.get('/spanish', function (req, res) {
+    res.sendFile(__dirname + "/spanish.html");
+});
 
 
 app.listen(port, function (error) {
