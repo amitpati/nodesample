@@ -12,6 +12,10 @@ app.get('/spanish', function (req, res) {
     res.sendFile(__dirname + "/spanish.html");
 });
 
+app.get('/taleo', function (req, res) {
+    res.sendFile(__dirname + "/taleo.html");
+});
+
 app.use(express.static(__dirname + 'public'));
 app.use('/img',express.static(__dirname + 'img')); //Serves resources from public folder
 
