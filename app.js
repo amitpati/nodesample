@@ -11,8 +11,10 @@ app.get('/faq', function (req, res) {
 app.get('/spanish', function (req, res) {
     res.sendFile(__dirname + "/spanish.html");
 });
-app.use(express.static('data/img'));
-app.use(express.static(__dirname + '/data/img'));
+
+app.use(express.static(__dirname + 'public'));
+app.use('/img',express.static(__dirname + 'img')); //Serves resources from public folder
+
 app.listen(port, function (error) {
     if (error) {
         console.error(error)
