@@ -15,6 +15,19 @@ app.get('/spanish', function (req, res) {
 app.get('/taleo', function (req, res) {
     res.sendFile(__dirname + "/taleo.html");
 });
+app.get('/getData', function (req, res) {
+    
+	
+	request.get("http://129.213.72.248:8001/asset/allFilters", (error, response, body) => {
+        if (error) {
+            res.send(500, error);
+        }
+        console.log(JSON.parse(body));
+        var resData = JSON.parse(body)
+        res.send(200, resData);
+    });
+
+})
 
 app.use(express.static(__dirname + 'public'));
 app.use('/img',express.static(__dirname + 'img')); //Serves resources from public folder
