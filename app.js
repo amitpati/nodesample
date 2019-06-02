@@ -36,7 +36,7 @@ const uploadImage = async (req, res, next) => {
     try {
 console.log(req.body.userid)
         // to declare some path to store your converted image
-        const path = './img/' + Date.now() + '.png';
+       // const path = './img/' + Date.now() + '.png';
          const path = './img/' + req.body.userid + '.png';
         const imgdata = req.body.base64image;
 
