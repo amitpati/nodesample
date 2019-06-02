@@ -31,13 +31,15 @@ app.get('/getData', function (req, res) {
 const bodyParser = require('body-parser');
 const fs = require('fs');
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
+app.use('/static', express.static('public'))
 const uploadImage = async (req, res, next) => {
 
     try {
 console.log(req.body.userid)
         // to declare some path to store your converted image
        // const path = './img/' + Date.now() + '.png';
-         const path = './img/' + req.body.userid + '.png';
+         const path = './public/' + req.body.userid + '.png';
         const imgdata = req.body.base64image;
 
         // to convert base64 format into random filename
@@ -76,10 +78,7 @@ console.log(req.body.userid)
 }
 app.post('/upload/image', uploadImage)
 
-
-app.use(express.static(__dirname + 'public'));
-app.use('/img', express.static(__dirname + 'img')); //Serves resources from public folder
-
+ 
 app.listen(port, function (error) {
     if (error) {
         console.error(error)
