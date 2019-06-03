@@ -1,6 +1,12 @@
 var express = require('express');
 var app = express();
 var request = require("request");
+
+const bodyParser = require('body-parser');
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));  
 const port = process.env.PORT || 3030;
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/index.html");
@@ -27,23 +33,22 @@ app.get('/getData', function (req, res) {
         res.send(200, resData);
     });
 
-})
-const bodyParser = require('body-parser');
+}) 
 const fs = require('fs');
-app.use(bodyParser.urlencoded({ extended: false }));
+//
 app.use(express.static('public'));
 app.use('/static', express.static('public'))
 const uploadImage = async (req, res, next) => {
 
     try {
-        console.log(JSON.stringify(req.body))
+        console.log(req)
+        console.log("****string*********" +req.body.userid)
         // to declare some path to store your converted image
         // const path = './img/' + Date.now() + '.png';
         const path = './public/' + req.body.userid + '.png';
 
         console.log("*************" + path)
-        console.log(">>>>>>>>>" + req.body.userid)
-        console.log("-----------" + JSON.parse(req.body.userid))
+        console.log(">>>>>>>>>" + req.body.userid) 
         const imgdata = req.body.base64image;
         console.log(imgdata)
         // to convert base64 format into random filename
