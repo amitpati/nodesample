@@ -67,11 +67,10 @@ const uploadImage = async (req, res, next) => {
                 return [];
             } else {
                 console.log("Request success2: " + body);
-
-                return res.send(response.statusCode, "https://nodeapporacle.herokuapp.com/static/" + req.body.userid + '.png');
+                res.status(200).send("Success");
             }
         });
-        return res.send(path);
+        return res.send("https://nodeapporacle.herokuapp.com/static/" + req.body.userid + '.png');
 
     } catch (e) {
         next(e);
