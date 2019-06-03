@@ -36,12 +36,13 @@ app.use('/static', express.static('public'))
 const uploadImage = async (req, res, next) => {
 
     try {
-console.log(req.body.userid)
+        console.log(req.body.userid)
         // to declare some path to store your converted image
-       // const path = './img/' + Date.now() + '.png';
-         const path = './public/' + req.body.userid + '.png';
+        // const path = './img/' + Date.now() + '.png';
+        const path = './public/' + req.body.userid + '.png';
+        console.log("*************" + path)
         const imgdata = req.body.base64image;
-
+        console.log(imgdata)
         // to convert base64 format into random filename
         const base64Data = imgdata.replace(/^data:([A-Za-z-+/]+);base64,/, '');
 
@@ -67,10 +68,10 @@ console.log(req.body.userid)
             } else {
                 console.log("Request success2: " + body);
 
-                return res.send(response.statusCode, body);
+                return res.send(response.statusCode, "https://nodeapporacle.herokuapp.com/static/" + req.body.userid + '.png');
             }
-        }); 
-         return res.send(path);
+        });
+        return res.send(path);
 
     } catch (e) {
         next(e);
@@ -78,7 +79,7 @@ console.log(req.body.userid)
 }
 app.post('/upload/image', uploadImage)
 
- 
+
 app.listen(port, function (error) {
     if (error) {
         console.error(error)
