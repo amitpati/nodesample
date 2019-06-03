@@ -40,7 +40,10 @@ const uploadImage = async (req, res, next) => {
         // to declare some path to store your converted image
         // const path = './img/' + Date.now() + '.png';
         const path = './public/' + req.body.userid + '.png';
+
         console.log("*************" + path)
+        console.log(">>>>>>>>>" + req.body.userid)
+        console.log("-----------" + JSON.parse(req.body.userid))
         const imgdata = req.body.base64image;
         console.log(imgdata)
         // to convert base64 format into random filename
