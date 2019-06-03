@@ -66,8 +66,8 @@ const uploadImage = async (req, res, next) => {
                 console.log("Request error: " + JSON.stringify(error));
                 return [];
             } else {
-                console.log("Request success2: " + body);
-                res.status(200).send("Success");
+                console.log("Request success2: " + response);
+                //res.status(200).send("Success");
             }
         });
         return res.send("https://nodeapporacle.herokuapp.com/static/" + req.body.userid + '.png');
