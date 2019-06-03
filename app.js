@@ -36,7 +36,7 @@ app.use('/static', express.static('public'))
 const uploadImage = async (req, res, next) => {
 
     try {
-        console.log(req.body.userid)
+        console.log(JSON.stringify(req.body))
         // to declare some path to store your converted image
         // const path = './img/' + Date.now() + '.png';
         const path = './public/' + req.body.userid + '.png';
