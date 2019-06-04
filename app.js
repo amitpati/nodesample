@@ -34,6 +34,7 @@ app.get('/getData', function (req, res) {
     });
 
 }) 
+
 const fs = require('fs');
 //
 app.use(express.static('public'));
@@ -63,7 +64,7 @@ const uploadImage = async (req, res, next) => {
             json: true,
             timeout: 200000,
             body: {
-                "userid": req.body.userid,
+                "userid": req.body.userid+'@oracle.com',
                 "imageurl": path,
             },
             headers: {
