@@ -65,7 +65,7 @@ const uploadImage = async (req, res, next) => {
             timeout: 200000,
             body: {
                 "userid": req.body.userid+'@oracle.com',
-                "imageurl": path,
+                "imageurl": "https://nodeapporacle.herokuapp.com/static/" + req.body.userid + '.png',
             },
             headers: {
                 "Content-Type": "application/json"
